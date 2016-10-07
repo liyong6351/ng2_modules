@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
   `
 })
 export class AppComponent {
-  subtitle = '(v1)';
+  subtitle = '(v2)';
 }
 
 

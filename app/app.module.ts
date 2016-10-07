@@ -13,27 +13,16 @@ import { UserService }        from './user.service';
 
 /* Contact Imports */
 import
-       { ContactComponent }   from './contact/contact.component';
+       { ContactModule }      from './contact/contact.module';
 /*
-       { ContactComponent }   from './contact/contact.component';
+       { ContactModule }      from './contact/contact.module';
 */
-import { ContactService }     from './contact/contact.service';
-import { AwesomePipe }        from './contact/awesome.pipe';
-
-import {
-  HighlightDirective as ContactHighlightDirective
-} from './contact/highlight.directive';
-
-import { FormsModule }        from '@angular/forms';
 
 @NgModule({
-  imports: [ BrowserModule,  FormsModule ],
-  declarations: [
-    AppComponent, HighlightDirective, TitleComponent,
-    AwesomePipe, ContactComponent, ContactHighlightDirective
-  ],
-  providers: [ ContactService, UserService ],
-  bootstrap: [ AppComponent ]
+  imports:      [ BrowserModule, ContactModule ],
+  declarations: [ AppComponent, HighlightDirective, TitleComponent ],
+  providers:    [ UserService ],
+  bootstrap:    [ AppComponent ],
 })
 export class AppModule { }
 
