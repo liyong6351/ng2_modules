@@ -12,26 +12,26 @@ var core_1 = require('@angular/core');
 var platform_browser_1 = require('@angular/platform-browser');
 /* App Root */
 var app_component_1 = require('./app.component');
-/*
-       { AppComponent }       from './app.component';
-*/
 var highlight_directive_1 = require('./highlight.directive');
 var title_component_1 = require('./title.component');
 var user_service_1 = require('./user.service');
-/* Contact Imports */
+/* Feature Modules */
 var contact_module_1 = require('./contact/contact.module');
-/*
-       { ContactModule }      from './contact/contact.module';
-*/
+/* Routing Module */
+var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         core_1.NgModule({
-            imports: [platform_browser_1.BrowserModule, contact_module_1.ContactModule],
-            declarations: [app_component_1.AppComponent, highlight_directive_1.HighlightDirective, title_component_1.TitleComponent],
+            imports: [
+                platform_browser_1.BrowserModule,
+                contact_module_1.ContactModule,
+                app_routing_module_1.AppRoutingModule
+            ],
             providers: [user_service_1.UserService],
-            bootstrap: [app_component_1.AppComponent],
+            declarations: [app_component_1.AppComponent, highlight_directive_1.HighlightDirective, title_component_1.TitleComponent],
+            bootstrap: [app_component_1.AppComponent]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

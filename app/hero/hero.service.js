@@ -9,30 +9,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var common_1 = require('@angular/common');
-var forms_1 = require('@angular/forms');
-var awesome_pipe_1 = require('./awesome.pipe');
-var contact_component_1 = require('./contact.component');
-var contact_service_1 = require('./contact.service');
-var highlight_directive_1 = require('./highlight.directive');
-var contact_routing_module_1 = require('./contact-routing.module');
-var ContactModule = (function () {
-    function ContactModule() {
+var Hero = (function () {
+    function Hero(id, name) {
+        this.id = id;
+        this.name = name;
     }
-    ContactModule = __decorate([
-        core_1.NgModule({
-            imports: [common_1.CommonModule, forms_1.FormsModule, contact_routing_module_1.ContactRoutingModule],
-            declarations: [contact_component_1.ContactComponent, highlight_directive_1.HighlightDirective, awesome_pipe_1.AwesomePipe],
-            providers: [contact_service_1.ContactService]
-        }), 
-        __metadata('design:paramtypes', [])
-    ], ContactModule);
-    return ContactModule;
+    return Hero;
 }());
-exports.ContactModule = ContactModule;
+exports.Hero = Hero;
+var HEROES = [
+    new Hero(11, 'Mr. Nice'),
+    new Hero(12, 'Narco'),
+    new Hero(13, 'Bombasto'),
+    new Hero(14, 'Celeritas'),
+    new Hero(15, 'Magneta'),
+    new Hero(16, 'RubberMan')
+];
+var FETCH_LATENCY = 500;
+var HeroService = (function () {
+    function HeroService() {
+    }
+    HeroService.prototype.getHeroes = function () {
+        return new Promise(function (resolve) {
+            setTimeout(function () { resolve(HEROES); }, FETCH_LATENCY);
+        });
+    };
+    HeroService.prototype.getHero = function (id) {
+        return this.getHeroes()
+            .then(function (heroes) { return heroes.find(function (hero) { return hero.id === +id; }); });
+    };
+    HeroService = __decorate([
+        core_1.Injectable(), 
+        __metadata('design:paramtypes', [])
+    ], HeroService);
+    return HeroService;
+}());
+exports.HeroService = HeroService;
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at http://angular.io/license
 */ 
-//# sourceMappingURL=contact.module.js.map
+//# sourceMappingURL=hero.service.js.map

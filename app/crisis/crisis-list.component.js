@@ -9,30 +9,26 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var common_1 = require('@angular/common');
-var forms_1 = require('@angular/forms');
-var awesome_pipe_1 = require('./awesome.pipe');
-var contact_component_1 = require('./contact.component');
-var contact_service_1 = require('./contact.service');
-var highlight_directive_1 = require('./highlight.directive');
-var contact_routing_module_1 = require('./contact-routing.module');
-var ContactModule = (function () {
-    function ContactModule() {
+var crisis_service_1 = require('./crisis.service');
+var CrisisListComponent = (function () {
+    function CrisisListComponent(crisisService) {
+        this.crisisService = crisisService;
     }
-    ContactModule = __decorate([
-        core_1.NgModule({
-            imports: [common_1.CommonModule, forms_1.FormsModule, contact_routing_module_1.ContactRoutingModule],
-            declarations: [contact_component_1.ContactComponent, highlight_directive_1.HighlightDirective, awesome_pipe_1.AwesomePipe],
-            providers: [contact_service_1.ContactService]
+    CrisisListComponent.prototype.ngOnInit = function () {
+        this.crisises = this.crisisService.getCrises();
+    };
+    CrisisListComponent = __decorate([
+        core_1.Component({
+            template: "\n    <h3 highlight>Crisis List</h3>\n    <div *ngFor='let crisis of crisises | async'>\n      <a routerLink=\"{{'../' + crisis.id}}\">{{crisis.id}} - {{crisis.name}}</a>\n    </div>\n  "
         }), 
-        __metadata('design:paramtypes', [])
-    ], ContactModule);
-    return ContactModule;
+        __metadata('design:paramtypes', [crisis_service_1.CrisisService])
+    ], CrisisListComponent);
+    return CrisisListComponent;
 }());
-exports.ContactModule = ContactModule;
+exports.CrisisListComponent = CrisisListComponent;
 /*
 Copyright 2016 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at http://angular.io/license
 */ 
-//# sourceMappingURL=contact.module.js.map
+//# sourceMappingURL=crisis-list.component.js.map
