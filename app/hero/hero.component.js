@@ -8,9 +8,10 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+// Exact copy except import UserService from core
 var core_1 = require('@angular/core');
 var hero_service_1 = require('./hero.service');
-var user_service_1 = require('../user.service');
+var user_service_1 = require('../core/user.service');
 var HeroComponent = (function () {
     function HeroComponent(userService) {
         this.userName = '';
